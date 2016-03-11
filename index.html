@@ -1,0 +1,31 @@
+<title>Webcam Mirror</title>
+<style>
+#video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(polina.jpg) no-repeat;
+    background-size: cover;
+}
+</style>
+
+<video autoplay="true" id="video"> </video>
+<script>
+var video = document.querySelector("#video");
+function handleVideo(stream) {video.src = window.URL.createObjectURL(stream);}
+function videoError(e) {}
+
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+navigator.getUserMedia({video: true}, handleVideo, videoError);
+</script>
+<p>Webcam mirror on <a href="https://github.com/ondrejsika/webcam-mirror">Github</a> by <a href="https://ondrejsika.com/">Ondrej Sika</a></p>
+
